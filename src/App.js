@@ -1,37 +1,31 @@
-import {
-  Route,
-  Switch,
-  useLocation,
-  Redirect
-} from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import 'App.css';
-import LoginPage from 'pages/LoginPage';
+import ProtectedRoute from 'auth/ProtectedRoute';
+import Footer from 'components/Footer';
+import Header from 'components/Header';
+import { startCase } from 'lodash';
+import HomePage from 'pages/HomePage';
 import NewsPage from 'pages/NewsPage';
-import UserPage from 'pages/UserPage';
+import ProfilePage from 'pages/ProfilePage';
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 
 const App = () => {
   const location = useLocation();
+  const { isAuthenticated } = useAuth0();
+  const pageTitle = startCase(location.pathname.split('/')[1]);
 
   return (
     <div>
-      {location.pathname !== '/login' && <header>HEADER</header>}
+      <Header pageTitle={pageTitle}/>
       <div>
         <Switch>
-          <Route path="/user">
-            <UserPage />
-          </Route>
-          <Route path="/news">
-            <NewsPage />
-          </Route>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <Route >
-            <Redirect to="/login" />
-          </Route>
+          <ProtectedRoute strict path="/profile/" component={ProfilePage} />
+          <ProtectedRoute exact strict path="/news" component={NewsPage} />
+          <Route exact strict path="/" component={() => isAuthenticated ? <Redirect to="/news" /> : <HomePage />} />
+          <Route component={() => <Redirect to="/" />} />
         </Switch>
       </div>
-      {location.pathname !== '/login' && <footer>FOOTER</footer>}
+      <Footer />
     </div>
   );
 }
