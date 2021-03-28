@@ -19,13 +19,13 @@ const App = () => {
       <Header pageTitle={pageTitle}/>
       <div>
         <Switch>
-          <ProtectedRoute strict path="/profile/" component={ProfilePage} />
+          <ProtectedRoute path="/profile" component={ProfilePage} />
           <ProtectedRoute exact strict path="/news" component={NewsPage} />
           <Route exact strict path="/" component={() => isAuthenticated ? <Redirect to="/news" /> : <HomePage />} />
           <Route component={() => <Redirect to="/" />} />
         </Switch>
       </div>
-      <Footer />
+      {location.pathname === '/' && <Footer />}
     </div>
   );
 }

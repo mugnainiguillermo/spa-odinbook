@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import HeroLayout from 'components/HeroLayout';
 import PropTypes from 'prop-types';
 import imagesUrls from 'utils/images-url';
-import textContent from 'utils/textContent';
 import urls from 'utils/urls';
 import styles from './Hero.styles';
 
@@ -20,10 +19,10 @@ const Hero = ({ classes }) => {
         alt="increase priority"
       />
       <Typography color="inherit" align="center" variant="h2">
-        {textContent.heroPrimary}
+        Become a true viking
       </Typography>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
-        {textContent.heroSecondary}
+        Meet and share unforgettable memories with other nordic warriors.
       </Typography>
       <Button
         color="secondary"
@@ -37,10 +36,10 @@ const Hero = ({ classes }) => {
           })
         }
       >
-        {textContent.heroButton}
+        Join now
       </Button>
       <Typography variant="body2" color="inherit" className={classes.more}>
-        {textContent.heroSubButton}
+        Discover the experience
       </Typography>
     </HeroLayout>
   );

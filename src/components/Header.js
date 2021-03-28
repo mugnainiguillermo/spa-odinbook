@@ -3,7 +3,6 @@ import { AppBar, Avatar, Button, Link, Toolbar, Typography, withStyles } from '@
 import OdinbookIcon from 'components/OdinbookIcon';
 import PropTypes from 'prop-types';
 import React from 'react';
-import textContent from 'utils/textContent';
 import urls from 'utils/urls';
 import styles from './Header.styles';
 
@@ -27,7 +26,7 @@ const Header = ({ classes, pageTitle }) => {
               onClick={() => logout({ returnTo: window.location.origin })}
               className={classes.logoutButton}
             >
-              {textContent.headerLogoutButton}
+              Logout
             </Button>
             <Link href={`/profile/123456`} underline="none" color="inherit" style={{ lineHeight: '0' }}>
             <Avatar alt={name} src={picture} />
@@ -38,7 +37,7 @@ const Header = ({ classes, pageTitle }) => {
             color="inherit"
             onClick={() =>loginWithRedirect({ redirectUri: urls.newsPage })}
           >
-            {textContent.headerLoginButton}
+            Login
           </Button>
         )}
       </Toolbar>

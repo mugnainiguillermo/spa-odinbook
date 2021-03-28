@@ -1,6 +1,5 @@
 import { Container, Grid, Link, Typography, withStyles } from '@material-ui/core';
 import { GitHub as GitHubIcon } from '@material-ui/icons';
-import textContent from 'utils/textContent';
 import PropTypes from 'prop-types';
 import urls from 'utils/urls';
 import styles from './Footer.styles';
@@ -14,7 +13,7 @@ const GitHub = () => {
         </Grid>
         <Grid item>
           <Typography>
-            {textContent.footerGitHubRepo}
+            Guillermo Mugnaini
           </Typography>
         </Grid>
       </Grid>
@@ -27,7 +26,7 @@ const Copyright = () => {
     <>
       {'© '}
       <Link color="inherit" href={urls.spaBase}>
-        {textContent.footerCopyright}
+        Odinbook
       </Link>{' '}
       {new Date().getFullYear()}
     </>
